@@ -1,0 +1,33 @@
+= Asciidoctor.js User Manual
+
+== API
+
+=== How to set document attribute
+
+You can set document attributes after loading AsciiDoc content.
+
+[source,javascript]
+----
+var content = '== Title';
+var doc = Opal.Asciidoctor.load(content);
+console.log(doc.getAttribute('data-uri')); // prints undefined
+console.log(doc.getAttribute('data-uri', 'false')); // prints 'false'
+
+doc.setAttribute('data-uri', 'true');
+console.log(doc.getAttribute('data-uri')); // prints 'true'
+----
+
+=== How to unset/delete document attribute
+
+You can unset document attributes after loading AsciiDoc content.
+
+[source,javascript]
+----
+var content = '== Title';
+var doc = Opal.Asciidoctor.load(content);
+doc.setAttribute('data-uri', 'true');
+console.log(doc.getAttribute('data-uri')); // prints 'true'
+
+doc.removeAttribute('data-uri');
+console.log(doc.getAttribute('data-uri')); // prints undefined
+----
